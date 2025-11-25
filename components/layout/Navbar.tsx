@@ -41,10 +41,10 @@ export function Navbar() {
                 </div>
 
                 <div className="flex items-center gap-4">
-                    <Button variant="ghost" size="icon" className="hidden md:flex">
+                    {/* <Button variant="ghost" size="icon" className="hidden md:flex">
                         <ShoppingBag className="h-5 w-5" />
                         <span className="sr-only">Cart</span>
-                    </Button>
+                    </Button> */}
 
                     {/* Mobile Menu Button */}
                     <Button
