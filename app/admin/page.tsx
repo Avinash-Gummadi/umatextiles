@@ -1,19 +1,20 @@
 "use client";
 
 import { useActionState } from "react";
-import { login } from "@/app/actions";
+import { login } from "../actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+import { LoginState } from "@/app/types";
 
-const initialState = {
+const initialState: LoginState = {
     error: "",
 };
 
 export default function AdminLogin() {
-    // @ts-ignore - useActionState types can be tricky with server actions returning different shapes
-    const [state, formAction, isPending] = useActionState(login, initialState);
+    // @ts-expect-error - useActionState types can be tricky with server actions returning different shapes
+    const [state, formAction, isPending] = useActionState<LoginState>(login, initialState);
 
     return (
         <div className="flex min-h-screen items-center justify-center bg-muted/40 px-4">

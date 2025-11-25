@@ -52,7 +52,7 @@ export default async function CollectionPage({ searchParams }: CollectionPagePro
             <div className="flex flex-col items-center text-center space-y-4 mb-12">
                 <h1 className="text-3xl md:text-4xl font-serif font-bold">Curated For You</h1>
                 <p className="text-muted-foreground max-w-2xl">
-                    We've handpicked these items specifically for your taste.
+                    We have handpicked these items specifically for your taste.
                 </p>
             </div>
 
