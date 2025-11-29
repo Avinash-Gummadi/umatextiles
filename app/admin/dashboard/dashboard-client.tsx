@@ -58,14 +58,14 @@ export default function DashboardClient({ products }: DashboardClientProps) {
 
                 <TabsContent value="active" className="space-y-8 mt-6">
                     <Card>
-                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                        <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0 pb-2">
                             <div className="space-y-1">
                                 <CardTitle className="text-2xl font-semibold">Select Products</CardTitle>
                                 <CardDescription>
                                     Choose products to create a curated collection link.
                                 </CardDescription>
                             </div>
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
                                 <span className="text-sm font-medium">
                                     {selectedProducts.length} selected
                                 </span>

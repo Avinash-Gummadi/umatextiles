@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { products } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Check, Truck, ShieldCheck } from "lucide-react";
+import ProductActions from "./product-actions";
+import { ProductCard } from "@/components/ui/ProductCard";
 
 // Generate static params for SSG
 export async function generateStaticParams() {
@@ -42,6 +44,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
         notFound();
     }
 
+    // Related products logic
+    const relatedProducts = products
+        .filter(p => p.category === product.category && p.id !== product.id && p.stock > 0)
+        .slice(0, 4);
+
+    // If not enough related products in same category, fill with other random products
+    if (relatedProducts.length < 4) {
+        const otherProducts = products
+            .filter(p => p.category !== product.category && p.id !== product.id && p.stock > 0)
+            .slice(0, 4 - relatedProducts.length);
+        relatedProducts.push(...otherProducts);
+    }
+
     return (
         <div className="container px-4 md:px-6 py-12 md:py-16">
             <div className="mb-8">
@@ -52,7 +67,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </Button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 mb-24">
                 {/* Image Section */}
                 <div className="relative aspect-[3/4] md:aspect-square overflow-hidden rounded-lg bg-muted">
                     <Image
@@ -66,7 +81,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </div>
 
                 {/* Details Section */}
-                <div className="flex flex-col justify-center space-y-6">
+                <div className="flex flex-col space-y-6">
                     <div>
                         <div className="text-sm text-muted-foreground uppercase tracking-wider mb-2">
                             {product.category}
@@ -100,16 +115,33 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         </div>
                     </div>
 
-                    <div className="pt-6 flex gap-4">
-                        <Button size="lg" className="w-full md:w-auto px-8">
-                            Add to Cart
-                        </Button>
-                        <Button size="lg" variant="outline" className="w-full md:w-auto">
-                            Buy Now
-                        </Button>
+                    <div className="pt-6">
+                        <ProductActions productName={product.name} productId={product.id} />
+                        {/* 
+                        <div className="flex gap-4 mt-4 opacity-50 pointer-events-none">
+                            <Button size="lg" className="w-full md:w-auto px-8">
+                                Add to Cart
+                            </Button>
+                            <Button size="lg" variant="outline" className="w-full md:w-auto">
+                                Buy Now
+                            </Button>
+                        </div> 
+                        */}
                     </div>
                 </div>
             </div>
+
+            {/* Related Products Section */}
+            {relatedProducts.length > 0 && (
+                <div className="space-y-8">
+                    <h2 className="text-2xl md:text-3xl font-serif font-bold">You might be interested in</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                        {relatedProducts.map((relatedProduct) => (
+                            <ProductCard key={relatedProduct.id} product={relatedProduct} />
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

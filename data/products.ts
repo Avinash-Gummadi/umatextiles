@@ -7,6 +7,8 @@ export interface Product {
     category: string;
     stock: number;
     tags?: string[];
+    color: string[];
+    fabric: string;
 }
 
 export const products: Product[] = [
@@ -18,7 +20,9 @@ export const products: Product[] = [
         description: "Premium soft silk saree with rich pallu. Perfect for weddings and special occasions.",
         category: "Sarees",
         stock: 15,
-        tags: ["bestseller", "trending"]
+        tags: ["bestseller", "trending"],
+        color: ["Pink", "Blue", "Green", "Yellow", "Black", "White"],
+        fabric: "Soft Silk"
     },
     {
         id: "saree-02",
@@ -28,7 +32,9 @@ export const products: Product[] = [
         description: "Authentic Kanjivaram silk saree with intricate gold zari work.",
         category: "Sarees",
         stock: 8,
-        tags: ["premium", "wedding"]
+        tags: ["premium", "wedding"],
+        color: ["Gold"],
+        fabric: "Kanjivaram Silk"
     },
     {
         id: "dress-01",
@@ -38,7 +44,9 @@ export const products: Product[] = [
         description: "Elegant Anarkali suit with hand embroidery and matching dupatta.",
         category: "Dress Materials",
         stock: 20,
-        tags: ["trending"]
+        tags: ["trending"],
+        color: ["Blue"],
+        fabric: "Cotton Silk"
     },
     {
         id: "kids-01",
@@ -48,7 +56,9 @@ export const products: Product[] = [
         description: "Beautiful red lehenga for kids, comfortable and stylish.",
         category: "Kids Wear",
         stock: 12,
-        tags: ["bestseller"]
+        tags: ["bestseller"],
+        color: ["Red", "Blue", "Green", "Yellow", "Black", "White"],
+        fabric: "Silk Blend"
     },
     {
         id: "blouse-01",
@@ -57,7 +67,9 @@ export const products: Product[] = [
         image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=1000&auto=format&fit=crop",
         description: "Ready-made designer blouse with sequin work.",
         category: "Blouses",
-        stock: 25
+        stock: 25,
+        color: ["Black"],
+        fabric: "Silk"
     },
     {
         id: "saree-03",
@@ -67,7 +79,9 @@ export const products: Product[] = [
         description: "Lightweight Banarasi Georgette saree in a vibrant green shade.",
         category: "Sarees",
         stock: 10,
-        tags: ["premium"]
+        tags: ["premium"],
+        color: ["Green", "Red", "Blue", "Yellow"],
+        fabric: "Banarasi Georgette"
     },
     {
         id: "saree-04",
@@ -77,7 +91,9 @@ export const products: Product[] = [
         description: "Classic Mysore silk saree with gold border.",
         category: "Sarees",
         stock: 18,
-        tags: ["bestseller"]
+        tags: ["bestseller"],
+        color: ["Maroon", "Black", "White"],
+        fabric: "Mysore Silk"
     },
     {
         id: "saree-05",
@@ -86,7 +102,9 @@ export const products: Product[] = [
         image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop",
         description: "Comfortable cotton saree perfect for daily wear.",
         category: "Sarees",
-        stock: 30
+        stock: 30,
+        color: ["Yellow"],
+        fabric: "Cotton"
     },
     {
         id: "dress-02",
@@ -96,7 +114,9 @@ export const products: Product[] = [
         description: "Stylish churidar set with intricate patterns.",
         category: "Dress Materials",
         stock: 15,
-        tags: ["trending"]
+        tags: ["trending"],
+        color: ["Pink"],
+        fabric: "Cotton"
     },
     {
         id: "dress-03",
@@ -105,7 +125,9 @@ export const products: Product[] = [
         image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop",
         description: "Trendy palazzo suit with modern design.",
         category: "Dress Materials",
-        stock: 22
+        stock: 22,
+        color: ["Green"],
+        fabric: "Georgette"
     },
     {
         id: "kids-02",
@@ -115,7 +137,9 @@ export const products: Product[] = [
         description: "Traditional sherwani for boys, ideal for weddings.",
         category: "Kids Wear",
         stock: 10,
-        tags: ["premium", "wedding"]
+        tags: ["premium", "wedding"],
+        color: ["Gold"],
+        fabric: "Silk"
     },
     {
         id: "kids-03",
@@ -125,7 +149,9 @@ export const products: Product[] = [
         description: "Cute and comfortable frock for girls.",
         category: "Kids Wear",
         stock: 35,
-        tags: ["bestseller"]
+        tags: ["bestseller"],
+        color: ["Blue"],
+        fabric: "Cotton"
     },
     {
         id: "blouse-02",
@@ -134,7 +160,9 @@ export const products: Product[] = [
         image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=1000&auto=format&fit=crop",
         description: "Hand-embroidered blouse with golden threads.",
         category: "Blouses",
-        stock: 14
+        stock: 14,
+        color: ["Gold"],
+        fabric: "Silk"
     },
     {
         id: "blouse-03",
@@ -144,7 +172,9 @@ export const products: Product[] = [
         description: "Sparkling sequin blouse for party wear.",
         category: "Blouses",
         stock: 20,
-        tags: ["trending", "party"]
+        tags: ["trending", "party"],
+        color: ["Silver", "Gold", "Black"],
+        fabric: "Georgette"
     },
     {
         id: "saree-06",
@@ -154,7 +184,9 @@ export const products: Product[] = [
         description: "Elegant Tussar silk saree with tribal art prints.",
         category: "Sarees",
         stock: 5,
-        tags: ["premium"]
+        tags: ["premium"],
+        color: ["Beige", "White", "Black"],
+        fabric: "Tussar Silk"
     },
     {
         id: "saree-07",
@@ -164,7 +196,9 @@ export const products: Product[] = [
         description: "Lightweight chiffon saree with floral prints.",
         category: "Sarees",
         stock: 28,
-        tags: ["bestseller"]
+        tags: ["bestseller"],
+        color: ["Red", "Black"],
+        fabric: "Chiffon"
     },
     // New Products
     {
@@ -175,7 +209,9 @@ export const products: Product[] = [
         description: "Luxurious Paithani silk with peacock motifs.",
         category: "Sarees",
         stock: 3,
-        tags: ["premium", "wedding"]
+        tags: ["premium", "wedding"],
+        color: ["Purple", "Leaf Green"],
+        fabric: "Paithani Silk"
     },
     {
         id: "saree-09",
@@ -185,7 +221,9 @@ export const products: Product[] = [
         description: "Trendy organza saree in pastel shades.",
         category: "Sarees",
         stock: 15,
-        tags: ["trending"]
+        tags: ["trending"],
+        color: ["Pink", "Peach", "Blue"],
+        fabric: "Organza"
     },
     {
         id: "dress-04",
@@ -195,7 +233,9 @@ export const products: Product[] = [
         description: "Rich velvet suit perfect for winter weddings.",
         category: "Dress Materials",
         stock: 8,
-        tags: ["premium", "winter"]
+        tags: ["premium", "winter"],
+        color: ["Maroon", "Saffron"],
+        fabric: "Velvet"
     },
     {
         id: "kids-04",
@@ -205,7 +245,9 @@ export const products: Product[] = [
         description: "Princess style gown for little girls.",
         category: "Kids Wear",
         stock: 20,
-        tags: ["bestseller"]
+        tags: ["bestseller"],
+        color: ["Pink", "Red", "Blue", "Green", "Yellow", "Orange", "Violet"],
+        fabric: "Satin"
     },
     {
         id: "saree-10",
@@ -214,7 +256,9 @@ export const products: Product[] = [
         image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1000&auto=format&fit=crop",
         description: "Sophisticated linen saree for office wear.",
         category: "Sarees",
-        stock: 12
+        stock: 12,
+        color: ["Grey", "Red"],
+        fabric: "Linen"
     },
     {
         id: "blouse-04",
@@ -223,7 +267,9 @@ export const products: Product[] = [
         image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=1000&auto=format&fit=crop",
         description: "Classic velvet blouse in navy blue.",
         category: "Blouses",
-        stock: 18
+        stock: 18,
+        color: ["Navy Blue", "Grey", "Golden Yellow", "Pink"],
+        fabric: "Velvet"
     },
     {
         id: "saree-11",
@@ -233,7 +279,9 @@ export const products: Product[] = [
         description: "Stunning black georgette saree with embroidery.",
         category: "Sarees",
         stock: 10,
-        tags: ["trending", "party"]
+        tags: ["trending", "party"],
+        color: ["Black", "White", "Blue", "Green", "Red", "Yellow", "Orange", "Violet"],
+        fabric: "Georgette"
     },
     {
         id: "saree-12",
@@ -243,7 +291,9 @@ export const products: Product[] = [
         description: "Traditional Kalamkari print on soft cotton.",
         category: "Sarees",
         stock: 25,
-        tags: ["bestseller"]
+        tags: ["bestseller"],
+        color: ["Red", "Violet", "Orange", "Yellow"],
+        fabric: "Cotton"
     },
     {
         id: "dress-05",
@@ -253,7 +303,9 @@ export const products: Product[] = [
         description: "Pure white cotton suit with chikankari work.",
         category: "Dress Materials",
         stock: 15,
-        tags: ["bestseller"]
+        tags: ["bestseller"],
+        color: ["White", "Black", "Blue"],
+        fabric: "Cotton"
     },
     {
         id: "saree-13",
@@ -263,6 +315,8 @@ export const products: Product[] = [
         description: "Exquisite double ikat Patola silk saree.",
         category: "Sarees",
         stock: 2,
-        tags: ["premium", "heirloom"]
+        tags: ["premium", "heirloom"],
+        color: ["Red", "Green", "Blue"],
+        fabric: "Patola Silk"
     }
 ];
