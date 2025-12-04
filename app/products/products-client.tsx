@@ -80,7 +80,7 @@ export default function ProductsClient({ products }: ProductsClientProps) {
             </div>
 
             <div className="flex flex-col lg:flex-row gap-8 relative">
-                {/* Product Grid - Pushed to the left when sidebar is open */}
+                {/* Product Grid */}
                 <div className="flex-1 transition-all duration-300 ease-in-out">
                     <div className={cn(
                         "grid gap-6 md:gap-8 transition-all duration-300",
@@ -100,9 +100,9 @@ export default function ProductsClient({ products }: ProductsClientProps) {
                     </div>
                 </div>
 
-                {/* Sidebar - Pushed from the right */}
+                {/* Desktop Sidebar - Hidden on mobile */}
                 <div className={cn(
-                    "lg:w-[300px] flex-shrink-0 transition-all duration-300 ease-in-out overflow-hidden",
+                    "hidden lg:block lg:w-[300px] flex-shrink-0 transition-all duration-300 ease-in-out overflow-hidden",
                     isFilterOpen ? "w-full opacity-100" : "w-0 opacity-0 lg:w-0 h-0 lg:h-auto"
                 )}>
                     <div className="bg-background border-l border-b border-t rounded-l-lg shadow-sm h-full">
@@ -116,29 +116,87 @@ export default function ProductsClient({ products }: ProductsClientProps) {
                         </div>
 
                         <div className="p-4 space-y-6">
-                            <FilterSection
-                                title="Category"
-                                options={categories}
-                                selected={selectedCategories}
-                                onToggle={(item) => toggleFilter(item, selectedCategories, setSelectedCategories)}
-                            />
-                            <FilterSection
-                                title="Fabric"
-                                options={fabrics}
-                                selected={selectedFabrics}
-                                onToggle={(item) => toggleFilter(item, selectedFabrics, setSelectedFabrics)}
-                            />
-                            <FilterSection
-                                title="Color"
-                                options={colors}
-                                selected={selectedColors}
-                                onToggle={(item) => toggleFilter(item, selectedColors, setSelectedColors)}
+                            <FilterList
+                                categories={categories} selectedCategories={selectedCategories} setSelectedCategories={setSelectedCategories}
+                                fabrics={fabrics} selectedFabrics={selectedFabrics} setSelectedFabrics={setSelectedFabrics}
+                                colors={colors} selectedColors={selectedColors} setSelectedColors={setSelectedColors}
+                                toggleFilter={toggleFilter}
                             />
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Mobile Filter Sheet */}
+            {isFilterOpen && (
+                <div className="fixed inset-0 z-50 lg:hidden">
+                    {/* Backdrop */}
+                    <div
+                        className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity"
+                        onClick={() => setIsFilterOpen(false)}
+                    />
+
+                    {/* Sheet */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-background rounded-t-xl shadow-2xl max-h-[85vh] flex flex-col animate-in slide-in-from-bottom duration-300">
+                        <div className="flex items-center justify-between p-4 border-b">
+                            <h2 className="font-serif font-bold text-lg">Filters</h2>
+                            <Button variant="ghost" size="icon" onClick={() => setIsFilterOpen(false)}>
+                                <X className="h-5 w-5" />
+                            </Button>
+                        </div>
+
+                        <div className="flex-1 overflow-y-auto p-4 space-y-6">
+                            <FilterList
+                                categories={categories} selectedCategories={selectedCategories} setSelectedCategories={setSelectedCategories}
+                                fabrics={fabrics} selectedFabrics={selectedFabrics} setSelectedFabrics={setSelectedFabrics}
+                                colors={colors} selectedColors={selectedColors} setSelectedColors={setSelectedColors}
+                                toggleFilter={toggleFilter}
+                            />
+                        </div>
+
+                        <div className="p-4 border-t bg-muted/20 flex gap-3">
+                            <Button variant="outline" className="flex-1" onClick={clearFilters} disabled={!hasActiveFilters}>
+                                Clear All
+                            </Button>
+                            <Button className="flex-1" onClick={() => setIsFilterOpen(false)}>
+                                Apply Filters
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
+    );
+}
+
+// Helper component for filter list
+function FilterList({
+    categories, selectedCategories, setSelectedCategories,
+    fabrics, selectedFabrics, setSelectedFabrics,
+    colors, selectedColors, setSelectedColors,
+    toggleFilter
+}: any) {
+    return (
+        <>
+            <FilterSection
+                title="Category"
+                options={categories}
+                selected={selectedCategories}
+                onToggle={(item) => toggleFilter(item, selectedCategories, setSelectedCategories)}
+            />
+            <FilterSection
+                title="Fabric"
+                options={fabrics}
+                selected={selectedFabrics}
+                onToggle={(item) => toggleFilter(item, selectedFabrics, setSelectedFabrics)}
+            />
+            <FilterSection
+                title="Color"
+                options={colors}
+                selected={selectedColors}
+                onToggle={(item) => toggleFilter(item, selectedColors, setSelectedColors)}
+            />
+        </>
     );
 }
 

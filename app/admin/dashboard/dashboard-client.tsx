@@ -44,8 +44,36 @@ export default function DashboardClient({ products }: DashboardClientProps) {
     };
 
     const copyLink = () => {
-        navigator.clipboard.writeText(generatedLink);
-        toast.success("Link copied to clipboard!");
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(generatedLink).then(() => {
+                toast.success("Link copied to clipboard!");
+            }).catch((err) => {
+                console.error("Failed to copy: ", err);
+                toast.error("Failed to copy link");
+            });
+        } else {
+            // Fallback for insecure contexts
+            try {
+                const textArea = document.createElement("textarea");
+                textArea.value = generatedLink;
+                textArea.style.position = "fixed"; // Avoid scrolling to bottom
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+
+                const successful = document.execCommand('copy');
+                document.body.removeChild(textArea);
+
+                if (successful) {
+                    toast.success("Link copied to clipboard!");
+                } else {
+                    toast.error("Failed to copy link");
+                }
+            } catch (err) {
+                console.error("Fallback copy failed:", err);
+                toast.error("Failed to copy link");
+            }
+        }
     };
 
     return (

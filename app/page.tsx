@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/ui/ProductCard";
 import { products } from "@/data/products";
 import { ArrowRight } from "lucide-react";
+import { PriceDisplay } from "@/components/ui/PriceDisplay";
 
 export default function Home() {
   const featuredProducts = products.filter(p => p.stock > 0).slice(0, 3);
@@ -183,23 +184,33 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.filter(p => p.tags?.includes('premium') && p.stock > 0).slice(0, 3).map((product) => (
-              <div key={product.id} className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:border-amber-200/30 transition-all duration-300">
-                <div className="relative aspect-[3/4] overflow-hidden">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+              <Link href={`/products/${product.id}`} key={product.id}>
+                <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:border-amber-200/30 transition-all duration-300">
+                  <div className="relative aspect-[3/4] overflow-hidden">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 space-y-3">
+                    <h3 className="text-xl font-serif font-medium text-amber-50">{product.name}</h3>
+                    <PriceDisplay
+                      price={product.price}
+                      discountPrice={product.discountPrice}
+                      className="text-amber-200/90"
+                      sellingPriceClassName="text-[rgba(253,230,138,0.9)] text-2xl"
+                      originalPriceClassName="text-amber-100/60 decoration-amber-100/40"
+                      discountInfoClassName="text-amber-400"
+                    />
+                    <Button variant="outline" className="w-full border-amber-200/30 text-amber-100 hover:bg-amber-900/50 hover:text-amber-50 hover:border-amber-200/50 bg-white/10 backdrop-blur-sm">
+                      View Details
+                    </Button>
+                  </div>
                 </div>
-                <div className="p-6 space-y-3">
-                  <h3 className="text-xl font-serif font-medium text-amber-50">{product.name}</h3>
-                  <p className="text-amber-200/90 font-semibold">{product.price}</p>
-                  <Button variant="outline" className="w-full border-amber-200/30 text-amber-100 hover:bg-amber-900/50 hover:text-amber-50 hover:border-amber-200/50 bg-white/10 backdrop-blur-sm">
-                    View Details
-                  </Button>
-                </div>
-              </div>
+              </Link>
+
             ))}
           </div>
         </div>

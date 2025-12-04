@@ -5,7 +5,8 @@ import { products } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Check, Truck, ShieldCheck } from "lucide-react";
 import ProductActions from "./product-actions";
-import { ProductCard } from "@/components/ui/ProductCard";
+import RelatedProducts from "./related-products";
+import { PriceDisplay } from "@/components/ui/PriceDisplay";
 
 // Generate static params for SSG
 export async function generateStaticParams() {
@@ -46,8 +47,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
     // Related products logic
     const relatedProducts = products
-        .filter(p => p.category === product.category && p.id !== product.id && p.stock > 0)
-        .slice(0, 4);
+        .filter(p => p.category === product.category && p.id !== product.id && p.stock > 0);
 
     // If not enough related products in same category, fill with other random products
     if (relatedProducts.length < 4) {
@@ -58,7 +58,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     }
 
     return (
-        <div className="container px-4 md:px-6 py-12 md:py-16">
+        <div className="container px-4 md:px-6 py-12 md:py-16 pb-24 md:pb-16">
             <div className="mb-8">
                 <Button variant="ghost" asChild className="pl-0 hover:pl-2 transition-all">
                     <Link href="/products" className="flex items-center gap-2 text-muted-foreground hover:text-primary">
@@ -67,7 +67,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </Button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 mb-24">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 mb-12">
                 {/* Image Section */}
                 <div className="relative aspect-[3/4] md:aspect-square overflow-hidden rounded-lg bg-muted">
                     <Image
@@ -89,9 +89,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         <h1 className="text-3xl md:text-4xl font-serif font-bold text-foreground">
                             {product.name}
                         </h1>
-                        <p className="text-2xl font-medium text-primary mt-4">
-                            {product.price}
-                        </p>
+                        <div className="mt-4">
+                            <PriceDisplay price={product.price} discountPrice={product.discountPrice} className="text-2xl" />
+                        </div>
                     </div>
 
                     <div className="prose prose-stone max-w-none">
@@ -117,16 +117,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
                     <div className="pt-6">
                         <ProductActions productName={product.name} productId={product.id} />
-                        {/* 
-                        <div className="flex gap-4 mt-4 opacity-50 pointer-events-none">
-                            <Button size="lg" className="w-full md:w-auto px-8">
-                                Add to Cart
-                            </Button>
-                            <Button size="lg" variant="outline" className="w-full md:w-auto">
-                                Buy Now
-                            </Button>
-                        </div> 
-                        */}
                     </div>
                 </div>
             </div>
@@ -135,11 +125,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             {relatedProducts.length > 0 && (
                 <div className="space-y-8">
                     <h2 className="text-2xl md:text-3xl font-serif font-bold">You might be interested in</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                        {relatedProducts.map((relatedProduct) => (
-                            <ProductCard key={relatedProduct.id} product={relatedProduct} />
-                        ))}
-                    </div>
+                    <RelatedProducts products={relatedProducts} />
                 </div>
             )}
         </div>
