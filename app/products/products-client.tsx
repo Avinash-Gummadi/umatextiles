@@ -169,13 +169,26 @@ export default function ProductsClient({ products }: ProductsClientProps) {
     );
 }
 
+interface FilterListProps {
+    categories: string[];
+    selectedCategories: string[];
+    setSelectedCategories: (categories: string[]) => void;
+    fabrics: string[];
+    selectedFabrics: string[];
+    setSelectedFabrics: (fabrics: string[]) => void;
+    colors: string[];
+    selectedColors: string[];
+    setSelectedColors: (colors: string[]) => void;
+    toggleFilter: (item: string, current: string[], setter: (items: string[]) => void) => void;
+}
+
 // Helper component for filter list
 function FilterList({
     categories, selectedCategories, setSelectedCategories,
     fabrics, selectedFabrics, setSelectedFabrics,
     colors, selectedColors, setSelectedColors,
     toggleFilter
-}: any) {
+}: FilterListProps) {
     return (
         <>
             <FilterSection

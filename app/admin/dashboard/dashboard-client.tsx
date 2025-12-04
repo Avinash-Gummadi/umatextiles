@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { toast } from "sonner";
 import { Product } from "@/data/products";
 import { Button } from "@/components/ui/button";
@@ -168,7 +169,13 @@ export default function DashboardClient({ products }: DashboardClientProps) {
                                 <Card key={product.id} className="opacity-75 border-dashed">
                                     <CardContent className="p-4 flex items-start gap-4">
                                         <div className="h-16 w-16 rounded bg-muted flex items-center justify-center flex-shrink-0 overflow-hidden">
-                                            <img src={product.image} alt={product.name} className="h-full w-full object-cover grayscale" />
+                                            <Image
+                                                src={product.image}
+                                                alt={product.name}
+                                                fill
+                                                className="object-cover grayscale"
+                                                sizes="64px"
+                                            />
                                         </div>
                                         <div className="space-y-1">
                                             <h3 className="font-medium leading-none">{product.name}</h3>

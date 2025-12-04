@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { ArrowDown } from "lucide-react";
 
 interface PriceDisplayProps {
     price: string;

@@ -9,7 +9,7 @@ interface ProductActionsProps {
     productId: string;
 }
 
-export default function ProductActions({ productName, productId }: ProductActionsProps) {
+export default function ProductActions({ productName }: ProductActionsProps) {
     const handleShare = async () => {
         const url = window.location.href;
         const shareData = {
