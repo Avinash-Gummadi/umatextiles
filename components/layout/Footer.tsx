@@ -13,7 +13,7 @@ export function Footer() {
                     </p>
                 </div>
 
-                <div className="flex gap-8 text-sm text-muted-foreground">
+                {/* <div className="flex gap-8 text-sm text-muted-foreground">
                     <Link href="/products" className="hover:text-primary transition-colors">
                         Collection
                     </Link>
@@ -23,7 +23,7 @@ export function Footer() {
                     <Link href="#" className="hover:text-primary transition-colors">
                         Privacy
                     </Link>
-                </div>
+                </div> */}
 
                 <div className="text-xs text-muted-foreground">
                     © {new Date().getFullYear()} Uma Textiles. All rights reserved.

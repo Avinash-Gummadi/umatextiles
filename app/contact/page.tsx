@@ -26,9 +26,9 @@ export default function ContactPage() {
                                 <div>
                                     <h3 className="font-medium mb-1">Address</h3>
                                     <p className="text-muted-foreground leading-relaxed">
-                                        123 Textile Market Road,<br />
-                                        Near City Center, Hyderabad,<br />
-                                        Telangana - 500001
+                                        Near Vinayaka Temple, 2 Town Police Station Road, <br />
+                                        Malavya Nagar, Gudur, <br />
+                                        Tirupati - 524101
                                     </p>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@ export default function ContactPage() {
                                 <Phone className="h-6 w-6 text-primary shrink-0 mt-1" />
                                 <div>
                                     <h3 className="font-medium mb-1">Phone</h3>
-                                    <p className="text-muted-foreground">+91 98765 43210</p>
+                                    <p className="text-muted-foreground">+91 94931 54284, +91 72072 54731</p>
                                 </div>
                             </div>
 
@@ -45,7 +45,7 @@ export default function ContactPage() {
                                 <Mail className="h-6 w-6 text-primary shrink-0 mt-1" />
                                 <div>
                                     <h3 className="font-medium mb-1">Email</h3>
-                                    <p className="text-muted-foreground">info@umatextiles.com</p>
+                                    <p className="text-muted-foreground">gummadi0812@gmail.com</p>
                                 </div>
                             </div>
 
@@ -54,8 +54,7 @@ export default function ContactPage() {
                                 <div>
                                     <h3 className="font-medium mb-1">Opening Hours</h3>
                                     <p className="text-muted-foreground">
-                                        Mon - Sat: 10:00 AM - 9:00 PM<br />
-                                        Sun: Closed
+                                        Mon - Sun: 8:00 AM - 9:00 PM
                                     </p>
                                 </div>
                             </div>
