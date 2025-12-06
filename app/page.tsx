@@ -41,7 +41,7 @@ export default function Home() {
       </section>
 
       {/* Categories Section */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-8 md:py-12 bg-background">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12 space-y-2">
             <h2 className="text-3xl font-serif font-bold">Shop by Category</h2>
@@ -74,7 +74,7 @@ export default function Home() {
       </section>
 
       {/* Featured Products */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section className="py-8 md:py-12 bg-muted/30">
         <div className="container px-4 md:px-6">
           <div className="flex items-center justify-between mb-12">
             <div className="space-y-1">
@@ -103,7 +103,7 @@ export default function Home() {
       </section>
 
       {/* Top Brands / Featured Collections */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-8 md:py-12 bg-background">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12 space-y-2">
             <h2 className="text-3xl font-serif font-bold">Exquisite Weaves</h2>
@@ -136,7 +136,7 @@ export default function Home() {
       </section>
 
       {/* Trending Now */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section className="py-8 md:py-12 bg-muted/30">
         <div className="container px-4 md:px-6">
           <div className="mb-12 space-y-2 text-center">
             <h2 className="text-3xl font-serif font-bold">Trending Now</h2>
@@ -151,7 +151,7 @@ export default function Home() {
       </section>
 
       {/* Best Sellers */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="pt-8 md:pt-12 pb-16 md:pb-24 bg-background">
         <div className="container px-4 md:px-6">
           <div className="mb-12 space-y-2 text-center">
             <h2 className="text-3xl font-serif font-bold">Best Sellers</h2>

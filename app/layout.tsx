@@ -10,8 +10,39 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 
 export const metadata: Metadata = {
-  title: "Uma Textiles and Fancy",
+  metadataBase: new URL('https://umatextiles.gummadii.com'),
+  title: {
+    default: "Uma Textiles and Fancy",
+    template: "%s | Uma Textiles"
+  },
   description: "Premium clothing showcase for Uma Textiles and Fancy.",
+  icons: {
+    icon: "/assets/logo9.png",
+    shortcut: "/assets/logo9.png",
+    apple: "/assets/logo9.png",
+  },
+  openGraph: {
+    title: "Uma Textiles and Fancy",
+    description: "Premium clothing showcase for Uma Textiles and Fancy.",
+    url: 'https://umatextiles.gummadii.com',
+    siteName: 'Uma Textiles',
+    images: [
+      {
+        url: '/assets/logo9.png',
+        width: 800,
+        height: 600,
+        alt: 'Uma Textiles Logo',
+      },
+    ],
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Uma Textiles and Fancy",
+    description: "Premium clothing showcase for Uma Textiles and Fancy.",
+    images: ['/assets/logo9.png'],
+  },
 };
 
 export default function RootLayout({
