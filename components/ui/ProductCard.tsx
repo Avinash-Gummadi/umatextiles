@@ -1,5 +1,7 @@
 "use client";
 
+import * as React from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -14,6 +16,19 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, hideActions = false }: ProductCardProps) {
+    const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+    const images = product.colorImages ? Object.values(product.colorImages) : [product.image];
+
+    React.useEffect(() => {
+        if (images.length <= 1) return;
+
+        const interval = setInterval(() => {
+            setCurrentImageIndex((prev) => (prev + 1) % images.length);
+        }, 2500);
+
+        return () => clearInterval(interval);
+    }, [images.length]);
+
     return (
         <motion.div
             whileHover={{ y: -5 }}
@@ -23,7 +38,7 @@ export function ProductCard({ product, hideActions = false }: ProductCardProps) 
                 <Card className="h-full flex flex-col overflow-hidden border-none shadow-sm hover:shadow-md transition-shadow bg-card">
                     <div className="aspect-[3/4] relative overflow-hidden bg-muted flex-shrink-0">
                         <Image
-                            src={product.image}
+                            src={images[currentImageIndex]}
                             alt={product.name}
                             fill
                             className="object-cover transition-transform duration-500 hover:scale-105"

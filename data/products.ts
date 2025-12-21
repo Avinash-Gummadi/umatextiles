@@ -9,21 +9,34 @@ export interface Product {
     stock: number;
     tags?: string[];
     color: string[];
+    colorImages?: Record<string, string>;
     fabric: string;
+    outOfStockColors?: string[];
 }
 
 export const products: Product[] = [
     {
         id: "saree-01",
-        name: "Soft Silk Saree – Pink",
-        price: "₹2,499",
-        discountPrice: "₹1,999",
-        image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1000&auto=format&fit=crop",
-        description: "Premium soft silk saree with rich pallu. Perfect for weddings and special occasions.",
+        name: "Soft Silk Saree",
+        price: "₹1,499",
+        discountPrice: "₹1,199",
+        image: "/assets/rajShreeSilk_deep_purple.png",
+        description: "Premium soft silk saree with rich pallu and blouse. Perfect for weddings and special occasions.",
         category: "Sarees",
         stock: 15,
         tags: ["bestseller", "trending"],
-        color: ["Pink", "Blue", "Green", "Yellow", "Black", "White"],
+        color: ["Blue", "Mulberry Purple", "Green", "Light Blue", "Violet", "Thick Blue", "Thick Green", "Red"],
+        outOfStockColors: ["Red"],
+        colorImages: {
+            "Blue": "/assets/rajShreeSilk_Blue.png",
+            "Mulberry Purple": "/assets/rajShreeSilk_Mulberry_Purple.png",
+            "Green": "/assets/rajShreeSilk_LightGreen.png",
+            "Light Blue": "/assets/rajShreeSilk_SkyBlue.png",
+            "Violet": "/assets/rajShreeSilk_Violet.png",
+            "Thick Blue": "/assets/rajShreeSilk_ThickBlue.png",
+            "Thick Green": "/assets/rajShreeSilk_ThickGreen.png",
+            "Red": "/assets/rajShreeSilk_Red.png"
+        },
         fabric: "Soft Silk"
     },
     {
@@ -95,7 +108,7 @@ export const products: Product[] = [
         name: "Mysore Silk – Maroon",
         price: "₹3,199",
         discountPrice: "0",
-        image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1000&auto=format&fit=crop",
+        image: "/assets/rajYog_baby_pink.png",
         description: "Classic Mysore silk saree with gold border.",
         category: "Sarees",
         stock: 18,
