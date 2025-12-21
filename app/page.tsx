@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[80vh] w-full overflow-hidden flex items-center justify-center bg-black">
+      <section className="relative min-h-[80vh] w-full overflow-hidden flex items-center justify-center bg-black">
         <div className="absolute inset-0 z-0">
           <Image
             src="/assets/hero.png"
@@ -26,19 +26,19 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-transparent opacity-80" />
         </div>
 
-        <div className="relative z-10 container px-4 md:px-6 h-full flex flex-col justify-end pb-20 md:pb-32">
-          <div className="max-w-3xl space-y-6">
-            <h1 className="text-5xl md:text-7xl font-serif font-bold tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-1000 leading-tight">
+        <div className="relative z-10 container px-4 md:px-6 h-full flex flex-col justify-end pb-12 sm:pb-16 md:pb-20 lg:pb-32 pt-20">
+          <div className="max-w-3xl space-y-4 md:space-y-6 lg:space-y-8">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-serif font-bold tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-1000 leading-tight">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-200 drop-shadow-sm">
                 Elegance Woven in Every Thread
               </span>
             </h1>
-            <p className="text-lg md:text-2xl text-amber-50/90 max-w-2xl font-light tracking-wide animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
+            <p className="text-base sm:text-lg lg:text-2xl text-amber-50/90 max-w-2xl font-light tracking-wide animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
               Discover our premium collection of Sarees, Dress Materials, and Kids Wear.
-              <span className="block mt-2 text-amber-100/70 text-base md:text-lg">Tradition meets modern sophistication at Uma Textiles.</span>
+              <span className="block mt-2 text-amber-100/70 text-sm sm:text-base lg:text-lg">Tradition meets modern sophistication at Uma Textiles.</span>
             </p>
-            <div className="pt-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-              <Button asChild size="lg" className="rounded-none border border-amber-400 bg-transparent text-amber-400 hover:bg-amber-400 hover:text-black px-10 py-6 text-lg tracking-widest transition-all duration-300 uppercase">
+            <div className="pt-4 md:pt-6 lg:pt-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
+              <Button asChild size="lg" className="rounded-none border border-amber-400 bg-transparent text-amber-400 hover:bg-amber-400 hover:text-black px-6 py-4 lg:px-10 lg:py-6 text-base lg:text-lg tracking-widest transition-all duration-300 uppercase">
                 <Link href="/products">
                   Explore Collection
                 </Link>
