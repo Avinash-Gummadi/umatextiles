@@ -41,57 +41,80 @@ export const products: Product[] = [
     },
     {
         id: "saree-02",
-        name: "Kanjivaram Silk – Gold",
-        price: "₹5,999",
-        discountPrice: "₹4,499",
-        image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1000&auto=format&fit=crop",
-        description: "Authentic Kanjivaram silk saree with intricate gold zari work.",
+        name: "Marble Fancy",
+        price: "₹1,200",
+        discountPrice: "₹1,075",
+        image: "/assets/rajYog_baby_pink.png",
+        description: "Marble fancy with intricate gold zari work.",
         category: "Sarees",
         stock: 8,
         tags: ["premium", "wedding"],
-        color: ["Gold"],
+        color: ["pink", "green", "blue", "purple", "brown"],
+        colorImages: {
+            "pink": "/assets/rajYog_baby_pink.png",
+            "green": "/assets/rajYog_green.png",
+            "blue": "/assets/rajYog_blue.png",
+            "purple": "/assets/rajYog_purple.png",
+            "brown": "/assets/rajYog_brown.png"
+        },
         fabric: "Kanjivaram Silk"
     },
     {
         id: "dress-01",
-        name: "Anarkali Suit – Blue",
+        name: "Fancy Silk Saree",
         price: "₹1,899",
         discountPrice: "0",
-        image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop",
-        description: "Elegant Anarkali suit with hand embroidery and matching dupatta.",
-        category: "Dress Materials",
+        image: "/assets/durga_brown.png",
+        description: "Elegant Fancy Silk Saree",
+        category: "Sarees",
         stock: 20,
         tags: ["trending"],
-        color: ["Blue"],
-        fabric: "Cotton Silk"
-    },
-    {
-        id: "kids-01",
-        name: "Festive Lehenga – Red",
-        price: "₹1,299",
-        discountPrice: "₹999",
-        image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1000&auto=format&fit=crop",
-        description: "Beautiful red lehenga for kids, comfortable and stylish.",
-        category: "Kids Wear",
-        stock: 12,
-        tags: ["bestseller"],
-        color: ["Red", "Blue", "Green", "Yellow", "Black", "White"],
-        fabric: "Silk Blend"
-    },
-    {
-        id: "blouse-01",
-        name: "Designer Blouse – Black",
-        price: "₹899",
-        discountPrice: "₹699",
-        image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=1000&auto=format&fit=crop",
-        description: "Ready-made designer blouse with sequin work.",
-        category: "Blouses",
-        stock: 25,
-        color: ["Black"],
-        fabric: "Silk"
+        color: ["Brown", "Blue", "Purple", "Sky Blue"],
+        colorImages: {
+            "Brown": "/assets/durga_brown.png",
+            "Blue": "/assets/durga_blue.png",
+            "Purple": "/assets/durga_purple.png",
+            "Sky Blue": "/assets/durga_skyblue.png"
+        },
+        fabric: "Fancy Silk"
     },
     {
         id: "saree-03",
+        name: "Festive Lenin Fancy Saree",
+        price: "₹1,299",
+        discountPrice: "₹999",
+        image: "/assets/linensimer_blue.png",
+        description: "Festive Lenin Fancy Saree",
+        category: "Sarees",
+        stock: 12,
+        tags: ["bestseller"],
+        color: ["Blue", "Yellow", "sky blue", "Red"],
+        colorImages: {
+            "Blue": "/assets/linensimer_blue.png",
+            "Yellow": "/assets/linensimer_yellow.png",
+            "sky blue": "/assets/linensimer_skyblue.png",
+            "Red": "/assets/linensimer_red.png"
+        },
+        fabric: "Silk Blend"
+    },
+    {
+        id: "saree-04",
+        name: "Kangana Fancy Saree – Brown",
+        price: "₹899",
+        discountPrice: "₹699",
+        image: "/assets/kangana_brown.png",
+        description: "Ready-made designer blouse with sequin work.",
+        category: "Sarees",
+        stock: 25,
+        tags: ["trending", "party"],
+        color: ["Brown"],
+        colorImages: {
+            "Brown": "/assets/kangana_brown.png"
+        },
+        fabric: "Silk"
+    },
+    {
+        id: "saree-05",
         name: "Banarasi Georgette – Green",
         price: "₹3,499",
         discountPrice: "₹2,799",
@@ -104,20 +127,26 @@ export const products: Product[] = [
         fabric: "Banarasi Georgette"
     },
     {
-        id: "saree-04",
-        name: "Mysore Silk – Maroon",
+        id: "saree-06",
+        name: "Fancy Saree",
         price: "₹3,199",
         discountPrice: "0",
-        image: "/assets/rajYog_baby_pink.png",
-        description: "Classic Mysore silk saree with gold border.",
+        image: "/assets/lovebite_green.png",
+        description: "Classic Fancy Saree",
         category: "Sarees",
         stock: 18,
         tags: ["bestseller"],
-        color: ["Maroon", "Black", "White"],
-        fabric: "Mysore Silk"
+        color: ["Green", "Sky Blue", "Purple", "Blue"],
+        colorImages: {
+            "Green": "/assets/lovebite_green.png",
+            "Sky Blue": "/assets/lovebite_skyblue.png",
+            "Purple": "/assets/lovebite_purple.png",
+            "Blue": "/assets/lovebite_blue.png"
+        },
+        fabric: "Fancy"
     },
     {
-        id: "saree-05",
+        id: "saree-07",
         name: "Cotton Saree – Yellow",
         price: "₹1,499",
         discountPrice: "₹1,199",
@@ -205,7 +234,7 @@ export const products: Product[] = [
         fabric: "Georgette"
     },
     {
-        id: "saree-06",
+        id: "saree-08",
         name: "Tussar Silk – Beige",
         price: "₹4,499",
         discountPrice: "₹3,999",
@@ -218,7 +247,7 @@ export const products: Product[] = [
         fabric: "Tussar Silk"
     },
     {
-        id: "saree-07",
+        id: "saree-09",
         name: "Chiffon Saree – Red",
         price: "₹1,799",
         discountPrice: "₹1,399",
@@ -232,7 +261,7 @@ export const products: Product[] = [
     },
     // New Products
     {
-        id: "saree-08",
+        id: "saree-10",
         name: "Paithani Silk – Purple",
         price: "₹8,999",
         discountPrice: "₹7,499",
@@ -245,7 +274,7 @@ export const products: Product[] = [
         fabric: "Paithani Silk"
     },
     {
-        id: "saree-09",
+        id: "saree-11",
         name: "Organza Saree – Pastel",
         price: "₹2,299",
         discountPrice: "0",
@@ -284,7 +313,7 @@ export const products: Product[] = [
         fabric: "Satin"
     },
     {
-        id: "saree-10",
+        id: "saree-12",
         name: "Linen Saree – Grey",
         price: "₹1,899",
         discountPrice: "₹1,499",
@@ -308,7 +337,7 @@ export const products: Product[] = [
         fabric: "Velvet"
     },
     {
-        id: "saree-11",
+        id: "saree-13",
         name: "Georgette Saree – Black",
         price: "₹2,199",
         discountPrice: "₹1,799",
@@ -321,7 +350,7 @@ export const products: Product[] = [
         fabric: "Georgette"
     },
     {
-        id: "saree-12",
+        id: "saree-14",
         name: "Kalamkari Cotton – Red",
         price: "₹1,299",
         discountPrice: "₹999",
@@ -347,7 +376,7 @@ export const products: Product[] = [
         fabric: "Cotton"
     },
     {
-        id: "saree-13",
+        id: "saree-15",
         name: "Patola Silk – Multi",
         price: "₹12,999",
         discountPrice: "₹10,999",
