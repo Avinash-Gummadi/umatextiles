@@ -15,6 +15,7 @@ export interface Product {
 }
 
 export const products: Product[] = [
+    // Sarees
     {
         id: "saree-01",
         name: "Soft Silk Saree",
@@ -25,17 +26,17 @@ export const products: Product[] = [
         category: "Sarees",
         stock: 15,
         tags: ["bestseller", "trending"],
-        color: ["Blue", "Mulberry Purple", "Green", "Light Blue", "Violet", "Thick Blue", "Thick Green", "Red"],
+        color: ["Blue", "Mulberry Purple", "Green", "Teal Green", "Violet", "Teal Blue", "Thick Green", "Rani Magenta"],
         outOfStockColors: ["Red"],
         colorImages: {
             "Blue": "/assets/rajShreeSilk_Blue.png",
             "Mulberry Purple": "/assets/rajShreeSilk_Mulberry_Purple.png",
-            "Green": "/assets/rajShreeSilk_LightGreen.png",
-            "Light Blue": "/assets/rajShreeSilk_SkyBlue.png",
+            "Green": "/assets/rajShreeSilk_Green.png",
+            "Teal Green": "/assets/rajShreeSilk_TealGreen.png",
             "Violet": "/assets/rajShreeSilk_Violet.png",
-            "Thick Blue": "/assets/rajShreeSilk_ThickBlue.png",
+            "Teal Blue": "/assets/rajShreeSilk_TealBlue.png",
             "Thick Green": "/assets/rajShreeSilk_ThickGreen.png",
-            "Red": "/assets/rajShreeSilk_Red.png"
+            "Rani Magenta": "/assets/rajShreeSilk_RaniMagenta.png"
         },
         fabric: "Soft Silk"
     },
@@ -49,13 +50,13 @@ export const products: Product[] = [
         category: "Sarees",
         stock: 8,
         tags: ["premium", "wedding"],
-        color: ["pink", "green", "blue", "purple", "brown"],
+        color: ["Pink", "Green", "Blue", "Purple", "Brown"],
         colorImages: {
-            "pink": "/assets/rajYog_baby_pink.png",
-            "green": "/assets/rajYog_green.png",
-            "blue": "/assets/rajYog_blue.png",
-            "purple": "/assets/rajYog_purple.png",
-            "brown": "/assets/rajYog_brown.png"
+            "Pink": "/assets/rajYog_baby_pink.png",
+            "Green": "/assets/rajYog_green.png",
+            "Blue": "/assets/rajYog_blue.png",
+            "Purple": "/assets/rajYog_purple.png",
+            "Brown": "/assets/rajYog_brown.png"
         },
         fabric: "Kanjivaram Silk"
     },
@@ -69,62 +70,66 @@ export const products: Product[] = [
         category: "Sarees",
         stock: 20,
         tags: ["trending"],
-        color: ["Brown", "Blue", "Purple", "Sky Blue"],
+        color: ["Brown", "Blue", "Purple", "Emerald Green"],
         colorImages: {
             "Brown": "/assets/durga_brown.png",
             "Blue": "/assets/durga_blue.png",
             "Purple": "/assets/durga_purple.png",
-            "Sky Blue": "/assets/durga_skyblue.png"
+            "Emerald Green": "/assets/durga_emeraldgreen.png"
         },
         fabric: "Fancy Silk"
     },
     {
         id: "saree-03",
         name: "Festive Lenin Fancy Saree",
-        price: "₹1,299",
-        discountPrice: "₹999",
+        price: "₹1,199",
+        discountPrice: "₹899",
         image: "/assets/linensimer_blue.png",
         description: "Festive Lenin Fancy Saree",
         category: "Sarees",
         stock: 12,
         tags: ["bestseller"],
-        color: ["Blue", "Yellow", "sky blue", "Red"],
+        color: ["Brown", "Violet", "Multicolor", "sky blue", "Maroon"],
         colorImages: {
-            "Blue": "/assets/linensimer_blue.png",
-            "Yellow": "/assets/linensimer_yellow.png",
+            "Brown": "/assets/linensimer_brown.png",
+            "Violet": "/assets/linensimer_violet.png",
+            "Multicolor": "/assets/linensimer_multicolor.png",
             "sky blue": "/assets/linensimer_skyblue.png",
-            "Red": "/assets/linensimer_red.png"
+            "Maroon": "/assets/linensimer_maroon.png"
         },
         fabric: "Silk Blend"
     },
     {
         id: "saree-04",
-        name: "Kangana Fancy Saree – Brown",
+        name: "Fancy Saree – Yellow",
         price: "₹899",
         discountPrice: "₹699",
-        image: "/assets/kangana_brown.png",
+        image: "/assets/fancySaree_yellow.png",
         description: "Ready-made designer blouse with sequin work.",
         category: "Sarees",
         stock: 25,
         tags: ["trending", "party"],
-        color: ["Brown"],
+        color: ["Yellow"],
         colorImages: {
-            "Brown": "/assets/kangana_brown.png"
+            "Yellow": "/assets/fancySaree_yellow.png"
         },
         fabric: "Silk"
     },
     {
         id: "saree-05",
-        name: "Banarasi Georgette – Green",
+        name: "Fancy Saree – Green",
         price: "₹3,499",
         discountPrice: "₹2,799",
-        image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop",
-        description: "Lightweight Banarasi Georgette saree in a vibrant green shade.",
+        image: "/assets/fancySaree_green.png",
+        description: "Lightweight Fancy Saree in a vibrant green shade.",
         category: "Sarees",
         stock: 10,
         tags: ["premium"],
-        color: ["Green", "Red", "Blue", "Yellow"],
-        fabric: "Banarasi Georgette"
+        color: ["Green"],
+        colorImages: {
+            "Green": "/assets/fancySaree_green.png"
+        },
+        fabric: "Fancy"
     },
     {
         id: "saree-06",
@@ -147,119 +152,52 @@ export const products: Product[] = [
     },
     {
         id: "saree-07",
-        name: "Cotton Saree – Yellow",
+        name: "Cotton Saree – Teal Green",
         price: "₹1,499",
         discountPrice: "₹1,199",
-        image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop",
+        image: "/assets/cottonSaree_tealGreen.png",
         description: "Comfortable cotton saree perfect for daily wear.",
         category: "Sarees",
         stock: 30,
-        color: ["Yellow"],
-        fabric: "Cotton"
-    },
-    {
-        id: "dress-02",
-        name: "Churidar Set – Pink",
-        price: "₹1,599",
-        discountPrice: "₹1,299",
-        image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1000&auto=format&fit=crop",
-        description: "Stylish churidar set with intricate patterns.",
-        category: "Dress Materials",
-        stock: 15,
-        tags: ["trending"],
-        color: ["Pink"],
-        fabric: "Cotton"
-    },
-    {
-        id: "dress-03",
-        name: "Palazzo Suit – Green",
-        price: "₹2,199",
-        discountPrice: "0",
-        image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop",
-        description: "Trendy palazzo suit with modern design.",
-        category: "Dress Materials",
-        stock: 22,
-        color: ["Green"],
-        fabric: "Georgette"
-    },
-    {
-        id: "kids-02",
-        name: "Boys Sherwani – Gold",
-        price: "₹1,999",
-        discountPrice: "₹1,499",
-        image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1000&auto=format&fit=crop",
-        description: "Traditional sherwani for boys, ideal for weddings.",
-        category: "Kids Wear",
-        stock: 10,
-        tags: ["premium", "wedding"],
-        color: ["Gold"],
-        fabric: "Silk"
-    },
-    {
-        id: "kids-03",
-        name: "Girls Frock – Blue",
-        price: "₹999",
-        discountPrice: "₹799",
-        image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop",
-        description: "Cute and comfortable frock for girls.",
-        category: "Kids Wear",
-        stock: 35,
-        tags: ["bestseller"],
-        color: ["Blue"],
-        fabric: "Cotton"
-    },
-    {
-        id: "blouse-02",
-        name: "Embroidered Blouse – Gold",
-        price: "₹1,199",
-        discountPrice: "₹899",
-        image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=1000&auto=format&fit=crop",
-        description: "Hand-embroidered blouse with golden threads.",
-        category: "Blouses",
-        stock: 14,
-        color: ["Gold"],
-        fabric: "Silk"
-    },
-    {
-        id: "blouse-03",
-        name: "Sequin Blouse – Silver",
-        price: "₹1,099",
-        discountPrice: "0",
-        image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=1000&auto=format&fit=crop",
-        description: "Sparkling sequin blouse for party wear.",
-        category: "Blouses",
-        stock: 20,
         tags: ["trending", "party"],
-        color: ["Silver", "Gold", "Black"],
-        fabric: "Georgette"
+        color: ["Teal Green"],
+        colorImages: {
+            "Teal Green": "/assets/cottonSaree_tealGreen.png"
+        },
+        fabric: "Cotton"
     },
     {
         id: "saree-08",
-        name: "Tussar Silk – Beige",
+        name: "Soft Silk Designer Saree – Green",
         price: "₹4,499",
         discountPrice: "₹3,999",
-        image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1000&auto=format&fit=crop",
-        description: "Elegant Tussar silk saree with tribal art prints.",
+        image: "/assets/softSilkDesigner_green.png",
+        description: "Elegant Soft Silk Designer Saree with tribal art prints.",
         category: "Sarees",
         stock: 5,
         tags: ["premium"],
-        color: ["Beige", "White", "Black"],
-        fabric: "Tussar Silk"
+        color: ["Green"],
+        colorImages: {
+            "Green": "/assets/softSilkDesigner_green.png"
+        },
+        fabric: "Soft Silk"
     },
     {
         id: "saree-09",
-        name: "Chiffon Saree – Red",
+        name: "Fancy Saree – Blue",
         price: "₹1,799",
         discountPrice: "₹1,399",
-        image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1000&auto=format&fit=crop",
+        image: "/assets/fancySaree_blue.png",
         description: "Lightweight chiffon saree with floral prints.",
         category: "Sarees",
         stock: 28,
         tags: ["bestseller"],
-        color: ["Red", "Black"],
-        fabric: "Chiffon"
+        color: ["Blue"],
+        colorImages: {
+            "Blue": "/assets/fancySaree_blue.png"
+        },
+        fabric: "Fancy"
     },
-    // New Products
     {
         id: "saree-10",
         name: "Paithani Silk – Purple",
@@ -287,32 +225,6 @@ export const products: Product[] = [
         fabric: "Organza"
     },
     {
-        id: "dress-04",
-        name: "Velvet Suit – Maroon",
-        price: "₹3,499",
-        discountPrice: "₹2,999",
-        image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1000&auto=format&fit=crop",
-        description: "Rich velvet suit perfect for winter weddings.",
-        category: "Dress Materials",
-        stock: 8,
-        tags: ["premium", "winter"],
-        color: ["Maroon", "Saffron"],
-        fabric: "Velvet"
-    },
-    {
-        id: "kids-04",
-        name: "Girls Gown – Pink",
-        price: "₹1,499",
-        discountPrice: "₹1,199",
-        image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop",
-        description: "Princess style gown for little girls.",
-        category: "Kids Wear",
-        stock: 20,
-        tags: ["bestseller"],
-        color: ["Pink", "Red", "Blue", "Green", "Yellow", "Orange", "Violet"],
-        fabric: "Satin"
-    },
-    {
         id: "saree-12",
         name: "Linen Saree – Grey",
         price: "₹1,899",
@@ -323,18 +235,6 @@ export const products: Product[] = [
         stock: 12,
         color: ["Grey", "Red"],
         fabric: "Linen"
-    },
-    {
-        id: "blouse-04",
-        name: "Velvet Blouse – Navy",
-        price: "₹999",
-        discountPrice: "0",
-        image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=1000&auto=format&fit=crop",
-        description: "Classic velvet blouse in navy blue.",
-        category: "Blouses",
-        stock: 18,
-        color: ["Navy Blue", "Grey", "Golden Yellow", "Pink"],
-        fabric: "Velvet"
     },
     {
         id: "saree-13",
@@ -363,6 +263,58 @@ export const products: Product[] = [
         fabric: "Cotton"
     },
     {
+        id: "saree-15",
+        name: "Patola Silk – Multi",
+        price: "₹12,999",
+        discountPrice: "₹10,999",
+        image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1000&auto=format&fit=crop",
+        description: "Exquisite double ikat Patola silk saree.",
+        category: "Sarees",
+        stock: 2,
+        tags: ["premium", "heirloom"],
+        color: ["Red", "Green", "Blue"],
+        fabric: "Patola Silk"
+    },
+    // Dress Materials
+    {
+        id: "dress-02",
+        name: "Churidar Set – Pink",
+        price: "₹1,599",
+        discountPrice: "₹1,299",
+        image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1000&auto=format&fit=crop",
+        description: "Stylish churidar set with intricate patterns.",
+        category: "Dress Materials",
+        stock: 15,
+        tags: ["trending"],
+        color: ["Pink"],
+        fabric: "Cotton"
+    },
+    {
+        id: "dress-03",
+        name: "Palazzo Suit – Green",
+        price: "₹2,199",
+        discountPrice: "0",
+        image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop",
+        description: "Trendy palazzo suit with modern design.",
+        category: "Dress Materials",
+        stock: 22,
+        color: ["Green"],
+        fabric: "Georgette"
+    },
+    {
+        id: "dress-04",
+        name: "Velvet Suit – Maroon",
+        price: "₹3,499",
+        discountPrice: "₹2,999",
+        image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1000&auto=format&fit=crop",
+        description: "Rich velvet suit perfect for winter weddings.",
+        category: "Dress Materials",
+        stock: 8,
+        tags: ["premium", "winter"],
+        color: ["Maroon", "Saffron"],
+        fabric: "Velvet"
+    },
+    {
         id: "dress-05",
         name: "Cotton Suit – White",
         price: "₹1,199",
@@ -375,17 +327,82 @@ export const products: Product[] = [
         color: ["White", "Black", "Blue"],
         fabric: "Cotton"
     },
+    // Kids Wear
     {
-        id: "saree-15",
-        name: "Patola Silk – Multi",
-        price: "₹12,999",
-        discountPrice: "₹10,999",
+        id: "kids-02",
+        name: "Boys Sherwani – Gold",
+        price: "₹1,999",
+        discountPrice: "₹1,499",
         image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1000&auto=format&fit=crop",
-        description: "Exquisite double ikat Patola silk saree.",
-        category: "Sarees",
-        stock: 2,
-        tags: ["premium", "heirloom"],
-        color: ["Red", "Green", "Blue"],
-        fabric: "Patola Silk"
+        description: "Traditional sherwani for boys, ideal for weddings.",
+        category: "Kids Wear",
+        stock: 10,
+        tags: ["premium", "wedding"],
+        color: ["Gold"],
+        fabric: "Silk"
+    },
+    {
+        id: "kids-03",
+        name: "Girls Frock – Blue",
+        price: "₹999",
+        discountPrice: "₹799",
+        image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop",
+        description: "Cute and comfortable frock for girls.",
+        category: "Kids Wear",
+        stock: 35,
+        tags: ["bestseller"],
+        color: ["Blue"],
+        fabric: "Cotton"
+    },
+    {
+        id: "kids-04",
+        name: "Girls Gown – Pink",
+        price: "₹1,499",
+        discountPrice: "₹1,199",
+        image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop",
+        description: "Princess style gown for little girls.",
+        category: "Kids Wear",
+        stock: 20,
+        tags: ["bestseller"],
+        color: ["Pink", "Red", "Blue", "Green", "Yellow", "Orange", "Violet"],
+        fabric: "Satin"
+    },
+    // Blouses
+    {
+        id: "blouse-02",
+        name: "Embroidered Blouse – Gold",
+        price: "₹1,199",
+        discountPrice: "₹899",
+        image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=1000&auto=format&fit=crop",
+        description: "Hand-embroidered blouse with golden threads.",
+        category: "Blouses",
+        stock: 14,
+        color: ["Gold"],
+        fabric: "Silk"
+    },
+    {
+        id: "blouse-03",
+        name: "Sequin Blouse – Silver",
+        price: "₹1,099",
+        discountPrice: "0",
+        image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=1000&auto=format&fit=crop",
+        description: "Sparkling sequin blouse for party wear.",
+        category: "Blouses",
+        stock: 20,
+        tags: ["trending", "party"],
+        color: ["Silver", "Gold", "Black"],
+        fabric: "Georgette"
+    },
+    {
+        id: "blouse-04",
+        name: "Velvet Blouse – Navy",
+        price: "₹999",
+        discountPrice: "0",
+        image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=1000&auto=format&fit=crop",
+        description: "Classic velvet blouse in navy blue.",
+        category: "Blouses",
+        stock: 18,
+        color: ["Navy Blue", "Grey", "Golden Yellow", "Pink"],
+        fabric: "Velvet"
     }
 ];

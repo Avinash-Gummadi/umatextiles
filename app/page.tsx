@@ -56,11 +56,10 @@ export default function Home() {
             <p className="text-muted-foreground">Curated collections for every occasion</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
               { name: "Sarees", image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop" },
-              { name: "Dress Materials", image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop" },
-              { name: "Kids Wear", image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1000&auto=format&fit=crop" }
+              { name: "Dress Materials", image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop" }
             ].map((cat) => (
               <Link key={cat.name} href="/products" className="group relative overflow-hidden rounded-lg aspect-[4/5]">
                 <Image
