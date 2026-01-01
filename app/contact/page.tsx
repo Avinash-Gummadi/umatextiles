@@ -28,7 +28,7 @@ export default function ContactPage() {
                                     <p className="text-muted-foreground leading-relaxed">
                                         Near Vinayaka Temple, 2 Town Police Station Road, <br />
                                         Malavya Nagar, Gudur, <br />
-                                        Tirupati - 524101
+                                        Nellore - 524101
                                     </p>
                                 </div>
                             </div>

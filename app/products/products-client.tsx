@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { Product } from "@/data/products";
 import { ProductCard } from "@/components/ui/ProductCard";
 import { Button } from "@/components/ui/button";
@@ -14,8 +15,11 @@ interface ProductsClientProps {
 }
 
 export default function ProductsClient({ products }: ProductsClientProps) {
+    const searchParams = useSearchParams();
+    const initialCategory = searchParams.get("category");
+
     const [isFilterOpen, setIsFilterOpen] = useState(false);
-    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+    const [selectedCategories, setSelectedCategories] = useState<string[]>(initialCategory ? [initialCategory] : []);
     const [selectedFabrics, setSelectedFabrics] = useState<string[]>([]);
     const [selectedColors, setSelectedColors] = useState<string[]>([]);
 

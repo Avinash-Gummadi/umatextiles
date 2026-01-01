@@ -17,7 +17,7 @@ export default function AdminLogin() {
     const [state, formAction, isPending] = useActionState<LoginState>(login, initialState);
 
     return (
-        <div className="flex min-h-screen items-center justify-center bg-muted/40 px-4">
+        <div className="flex min-h-0 flex-col items-center justify-center bg-muted/40 px-4 py-6 md:min-h-[calc(100vh-5rem)] md:py-0">
             <Card className="w-full max-w-sm">
                 <CardHeader>
                     <CardTitle className="text-2xl font-serif">Admin Login</CardTitle>

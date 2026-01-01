@@ -58,10 +58,10 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
-              { name: "Sarees", image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop" },
+              { name: "Sarees", image: "/assets/sample.avif" },
               { name: "Dress Materials", image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop" }
             ].map((cat) => (
-              <Link key={cat.name} href="/products" className="group relative overflow-hidden rounded-lg aspect-[4/5]">
+              <Link key={cat.name} href={`/products?category=${encodeURIComponent(cat.name)}`} className="group relative overflow-hidden rounded-lg aspect-[4/5]">
                 <Image
                   src={cat.image}
                   alt={cat.name}
@@ -176,7 +176,7 @@ export default function Home() {
       <section className="py-20 md:py-32 bg-slate-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <Image
-            src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=2000&auto=format&fit=crop"
+            src="/assets/sample.avif"
             alt="Pattern"
             fill
             className="object-cover"

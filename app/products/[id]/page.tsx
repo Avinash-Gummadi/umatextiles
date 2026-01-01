@@ -53,10 +53,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
     }
 
     return (
-        <div className="container px-4 md:px-6 py-12 md:py-16 pb-24 md:pb-16">
+        <div className="container px-4 md:px-6 py-12 md:py-8 pb-24 md:pb-16">
 
 
-            <div className="mb-12">
+            <div className="mb-6 md:mb-12">
                 <ProductDetailView product={product} />
             </div>
 

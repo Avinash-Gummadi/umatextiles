@@ -17,12 +17,21 @@ interface DashboardClientProps {
 export default function DashboardClient({ products }: DashboardClientProps) {
     const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
     const [generatedLink, setGeneratedLink] = useState("");
+    const [selectedGalleryItems, setSelectedGalleryItems] = useState<string[]>([]);
 
     const activeProducts = products.filter(p => p.stock > 0);
     const outOfStockProducts = products.filter(p => p.stock === 0);
 
     const toggleProduct = (productId: string) => {
         setSelectedProducts((prev) =>
+            prev.includes(productId)
+                ? prev.filter((id) => id !== productId)
+                : [...prev, productId]
+        );
+    };
+
+    const toggleGalleryItem = (productId: string) => {
+        setSelectedGalleryItems((prev) =>
             prev.includes(productId)
                 ? prev.filter((id) => id !== productId)
                 : [...prev, productId]
@@ -77,11 +86,74 @@ export default function DashboardClient({ products }: DashboardClientProps) {
         }
     };
 
+    const handleShare = async () => {
+        if (selectedGalleryItems.length === 0) {
+            toast.error("Please select at least one image to share");
+            return;
+        }
+
+        const selectedProductDetails = products.filter(p => selectedGalleryItems.includes(p.id));
+
+        // Try Native Share API with Files
+        if (navigator.share) {
+            try {
+                // 1. Fetch images and convert to Blobs
+                const filePromises = selectedProductDetails.map(async (product) => {
+                    try {
+                        const response = await fetch(product.image);
+                        const blob = await response.blob();
+                        // Get file extension from generic type or url, default to png
+                        const type = blob.type || 'image/png';
+                        const extension = type.split('/')[1] || 'png';
+
+                        return new File([blob], `${product.name.replace(/\s+/g, '_')}.${extension}`, {
+                            type: type,
+                        });
+                    } catch (error) {
+                        console.error(`Failed to load image for ${product.name}`, error);
+                        return null;
+                    }
+                });
+
+                const files = (await Promise.all(filePromises)).filter((f): f is File => f !== null);
+
+                if (files.length > 0 && navigator.canShare && navigator.canShare({ files })) {
+                    await navigator.share({
+                        files: files,
+                        title: 'Check out these products!',
+                        text: 'Here are some products I found for you.',
+                    });
+                    return;
+                } else {
+                    // If files cannot be shared (e.g. desktop), fall through to text share
+                    console.warn("Device does not support file sharing or files validation failed.");
+                }
+
+            } catch (err) {
+                // AbortError is common if user cancels share sheet
+                if ((err as Error).name !== 'AbortError') {
+                    console.error("Error sharing files:", err);
+                    toast.error("Failed to share images directly. Sharing details instead.");
+                } else {
+                    return; // User cancelled, don't fallback
+                }
+            }
+        }
+
+        // Fallback or specific WhatsApp button behavior
+        const text = selectedProductDetails.map(p =>
+            `*${p.name}*\nPrice: ${p.price}\n${p.description}`
+        ).join("%0a%0a");
+
+        window.open(`https://wa.me/?text=${text}`, '_blank');
+    };
+
     return (
         <div className="space-y-8">
             <Tabs defaultValue="active" className="w-full">
-                <TabsList className="grid w-full grid-cols-2 max-w-[400px]">
+                <TabsList className="grid w-full grid-cols-3 max-w-[600px]">
                     <TabsTrigger value="active">Active Products</TabsTrigger>
+                    <TabsTrigger value="active-gallery">Active Gallery</TabsTrigger>
                     <TabsTrigger value="out-of-stock">Out of Stock ({outOfStockProducts.length})</TabsTrigger>
                 </TabsList>
 
@@ -138,6 +210,16 @@ export default function DashboardClient({ products }: DashboardClientProps) {
                                         onCheckedChange={() => toggleProduct(product.id)}
                                         className="mt-1"
                                     />
+                                    {/* Image Logic Fix: Ensure product.image is used if available */}
+                                    <div className="h-20 w-20 rounded bg-muted flex items-center justify-center flex-shrink-0 overflow-hidden relative">
+                                        <Image
+                                            src={product.image}
+                                            alt={product.name}
+                                            fill
+                                            className="object-cover"
+                                            sizes="80px"
+                                        />
+                                    </div>
                                     <div className="space-y-1">
                                         <h3 className="font-medium leading-none">{product.name}</h3>
                                         <p className="text-sm text-muted-foreground">{product.price}</p>
@@ -150,6 +232,57 @@ export default function DashboardClient({ products }: DashboardClientProps) {
                                     </div>
                                 </CardContent>
                             </Card>
+                        ))}
+                    </div>
+                </TabsContent>
+
+                <TabsContent value="active-gallery" className="space-y-8 mt-6">
+                    <Card>
+                        <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0 pb-2">
+                            <div className="space-y-1">
+                                <CardTitle className="text-2xl font-semibold">Product Gallery</CardTitle>
+                                <CardDescription>
+                                    Select images to share via WhatsApp or other apps.
+                                </CardDescription>
+                            </div>
+                            <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
+                                <span className="text-sm font-medium">
+                                    {selectedGalleryItems.length} selected
+                                </span>
+                                <Button onClick={handleShare} disabled={selectedGalleryItems.length === 0}>
+                                    Share
+                                </Button>
+                            </div>
+                        </CardHeader>
+                    </Card>
+
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                        {activeProducts.map((product) => (
+                            <div
+                                key={product.id}
+                                className={`group relative aspect-square rounded-lg overflow-hidden border-2 cursor-pointer transition-all ${selectedGalleryItems.includes(product.id) ? "border-primary ring-2 ring-primary ring-offset-2" : "border-transparent hover:border-muted-foreground/50"
+                                    }`}
+                                onClick={() => toggleGalleryItem(product.id)}
+                            >
+                                <Image
+                                    src={product.image}
+                                    alt={product.name}
+                                    fill
+                                    className="object-cover transition-transform group-hover:scale-105"
+                                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+                                />
+                                <div className={`absolute inset-0 bg-black/40 transition-opacity flex items-center justify-center ${selectedGalleryItems.includes(product.id) ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                                    }`}>
+                                    <Checkbox
+                                        checked={selectedGalleryItems.includes(product.id)}
+                                        className="h-6 w-6 border-white/80 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                                    />
+                                </div>
+                                <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <p className="text-xs font-medium truncate">{product.name}</p>
+                                    <p className="text-[10px] opacity-80">{product.price}</p>
+                                </div>
+                            </div>
                         ))}
                     </div>
                 </TabsContent>
@@ -168,7 +301,7 @@ export default function DashboardClient({ products }: DashboardClientProps) {
                             {outOfStockProducts.map((product) => (
                                 <Card key={product.id} className="opacity-75 border-dashed">
                                     <CardContent className="p-4 flex items-start gap-4">
-                                        <div className="h-16 w-16 rounded bg-muted flex items-center justify-center flex-shrink-0 overflow-hidden">
+                                        <div className="h-16 w-16 rounded bg-muted flex items-center justify-center flex-shrink-0 overflow-hidden relative">
                                             <Image
                                                 src={product.image}
                                                 alt={product.name}

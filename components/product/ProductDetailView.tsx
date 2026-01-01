@@ -38,15 +38,15 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
 
     return (
         <>
-            <div className="mb-8">
+            <div className="mb-8 md:mb-2">
                 <Button variant="ghost" asChild className="pl-0 hover:pl-2 transition-all">
-                    <Link href="/products" className="flex items-center gap-2 text-muted-foreground hover:text-primary">
+                    <Link href="/products" className="flex items-center gap-2 text-muted-foreground hover:text-black">
                         <ArrowLeft className="h-4 w-4" /> Back to Collection
                     </Link>
                 </Button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 mb-0 md:mb-12">
                 {/* Image Section */}
                 <div className="relative aspect-[3/4] md:aspect-square overflow-hidden rounded-lg bg-muted">
                     <Image
