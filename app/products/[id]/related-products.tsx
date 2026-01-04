@@ -68,7 +68,7 @@ export default function RelatedProducts({ products }: RelatedProductsProps) {
                 {products.map((product) => (
                     <div
                         key={product.id}
-                        className="min-w-[45%] sm:min-w-[33%] md:min-w-[25%] lg:min-w-[20%] snap-start"
+                        className="w-[45%] sm:w-[33%] md:w-[25%] lg:w-[20%] flex-none snap-start"
                     >
                         <ProductCard product={product} hideActions={true} />
                     </div>

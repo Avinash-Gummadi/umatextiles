@@ -53,7 +53,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
                         src={currentImage}
                         alt={product.name}
                         fill
-                        className="object-cover transition-all duration-500"
+                        className="object-contain transition-all duration-500"
                         priority
                         sizes="(max-width: 768px) 100vw, 50vw"
                         key={currentImage} // Force re-render animation when image changes

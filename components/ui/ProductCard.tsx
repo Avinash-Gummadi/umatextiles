@@ -33,6 +33,7 @@ export function ProductCard({ product, hideActions = false }: ProductCardProps) 
         <motion.div
             whileHover={{ y: -5 }}
             transition={{ duration: 0.2 }}
+            className="h-full"
         >
             <Link href={`/products/${product.id}`} className="h-full block">
                 <Card className="h-full flex flex-col overflow-hidden border-none shadow-sm hover:shadow-md transition-shadow bg-card">

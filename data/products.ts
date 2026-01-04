@@ -61,25 +61,6 @@ export const products: Product[] = [
         fabric: "Kanjivaram Silk"
     },
     {
-        id: "dress-01",
-        name: "Fancy Silk Saree",
-        price: "₹1,899",
-        discountPrice: "0",
-        image: "/assets/durga_brown.png",
-        description: "Elegant Fancy Silk Saree",
-        category: "Sarees",
-        stock: 20,
-        tags: ["trending"],
-        color: ["Brown", "Blue", "Purple", "Emerald Green"],
-        colorImages: {
-            "Brown": "/assets/durga_brown.png",
-            "Blue": "/assets/durga_blue.png",
-            "Purple": "/assets/durga_purple.png",
-            "Emerald Green": "/assets/durga_emeraldgreen.png"
-        },
-        fabric: "Fancy Silk"
-    },
-    {
         id: "saree-03",
         name: "Festive Lenin Fancy Saree",
         price: "₹1,199",
@@ -249,134 +230,86 @@ export const products: Product[] = [
         color: ["Brown"],
         fabric: "Georgette"
     },
+    {
+        id: "saree-14",
+        name: "Fancy Silk Saree",
+        price: "₹1,899",
+        discountPrice: "0",
+        image: "/assets/durga_brown.png",
+        description: "Elegant Fancy Silk Saree",
+        category: "Sarees",
+        stock: 20,
+        tags: ["trending"],
+        color: ["Brown", "Blue", "Purple", "Emerald Green"],
+        colorImages: {
+            "Brown": "/assets/durga_brown.png",
+            "Blue": "/assets/durga_blue.png",
+            "Purple": "/assets/durga_purple.png",
+            "Emerald Green": "/assets/durga_emeraldgreen.png"
+        },
+        fabric: "Fancy Silk"
+    },
     // Dress Materials
     {
-        id: "dress-02",
-        name: "Churidar Set – Pink",
+        id: "dress-01",
+        name: "Cotton Dress Material",
         price: "₹1,599",
         discountPrice: "₹1,299",
-        image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1000&auto=format&fit=crop",
-        description: "Stylish churidar set with intricate patterns.",
-        category: "Dress Materials",
+        image: "/assets/dressMaterialCotton_black.png",
+        description: "Stylish cotton dress material with intricate patterns.",
+        category: "Dresses",
         stock: 15,
         tags: ["trending"],
-        color: ["Pink"],
+        color: ["Black", "Brown"],
+        colorImages: {
+            "Black": "/assets/dressMaterialCotton_black.png",
+            "Brown": "/assets/dressMaterialCotton_brown.png"
+        },
+        fabric: "Cotton"
+    },
+    {
+        id: "dress-02",
+        name: "Jeans Top – Purple",
+        price: "₹2,199",
+        discountPrice: "0",
+        image: "/assets/jeansTop_purple.png",
+        description: "Stylish cotton dress  with intricate patterns.",
+        category: "Dresses",
+        stock: 22,
+        tags: ["bestseller"],
+        color: ["Purple"],
         fabric: "Cotton"
     },
     {
         id: "dress-03",
-        name: "Palazzo Suit – Green",
+        name: "Jeans Top – Orange",
         price: "₹2,199",
         discountPrice: "0",
-        image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop",
-        description: "Trendy palazzo suit with modern design.",
-        category: "Dress Materials",
-        stock: 22,
-        color: ["Green"],
-        fabric: "Georgette"
+        image: "/assets/jeansTop_orange.png",
+        description: "Stylish cotton dress  with intricate patterns.",
+        category: "Dresses",
+        stock: 8,
+        
+        color: ["Orange"],
+        fabric: "Cotton"
     },
     {
         id: "dress-04",
-        name: "Velvet Suit – Maroon",
-        price: "₹3,499",
-        discountPrice: "₹2,999",
-        image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1000&auto=format&fit=crop",
-        description: "Rich velvet suit perfect for winter weddings.",
-        category: "Dress Materials",
-        stock: 8,
-        tags: ["premium", "winter"],
-        color: ["Maroon", "Saffron"],
-        fabric: "Velvet"
-    },
-    {
-        id: "dress-05",
-        name: "Cotton Suit – White",
+        name: "Kurthi Set",
         price: "₹1,199",
         discountPrice: "₹899",
-        image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1000&auto=format&fit=crop",
-        description: "Pure white cotton suit with chikankari work.",
-        category: "Dress Materials",
+        image: "/assets/kurthiSet3Piece_purple.png",
+        description: "Stylish Kurthi 3 Piece Set with intricate patterns.",
+        category: "Dresses",
         stock: 15,
-        tags: ["bestseller"],
-        color: ["White", "Black", "Blue"],
+        tags: ["trending"],
+        color: ["Purple", "Brown", "Grey", "Pink"],
+        colorImages: {
+            "Purple": "/assets/kurthiSet3Piece_purple.png",
+            "Brown": "/assets/kurthiSet3Piece_brown.png",
+            "Grey": "/assets/kurthiSet3Piece_grey.png",
+            "Pink": "/assets/kurthiSet3Piece_pink.png"
+        },
         fabric: "Cotton"
     },
-    // Kids Wear
-    {
-        id: "kids-02",
-        name: "Boys Sherwani – Gold",
-        price: "₹1,999",
-        discountPrice: "₹1,499",
-        image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1000&auto=format&fit=crop",
-        description: "Traditional sherwani for boys, ideal for weddings.",
-        category: "Kids Wear",
-        stock: 0,
-        tags: ["premium", "wedding"],
-        color: ["Gold"],
-        fabric: "Silk"
-    },
-    {
-        id: "kids-03",
-        name: "Girls Frock – Blue",
-        price: "₹999",
-        discountPrice: "₹799",
-        image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop",
-        description: "Cute and comfortable frock for girls.",
-        category: "Kids Wear",
-        stock: 0,
-        tags: ["bestseller"],
-        color: ["Blue"],
-        fabric: "Cotton"
-    },
-    {
-        id: "kids-04",
-        name: "Girls Gown – Pink",
-        price: "₹1,499",
-        discountPrice: "₹1,199",
-        image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop",
-        description: "Princess style gown for little girls.",
-        category: "Kids Wear",
-        stock: 20,
-        tags: ["bestseller"],
-        color: ["Pink", "Red", "Blue", "Green", "Yellow", "Orange", "Violet"],
-        fabric: "Satin"
-    },
-    // Blouses
-    {
-        id: "blouse-02",
-        name: "Embroidered Blouse – Gold",
-        price: "₹1,199",
-        discountPrice: "₹899",
-        image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=1000&auto=format&fit=crop",
-        description: "Hand-embroidered blouse with golden threads.",
-        category: "Blouses",
-        stock: 14,
-        color: ["Gold"],
-        fabric: "Silk"
-    },
-    {
-        id: "blouse-03",
-        name: "Sequin Blouse – Silver",
-        price: "₹1,099",
-        discountPrice: "0",
-        image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=1000&auto=format&fit=crop",
-        description: "Sparkling sequin blouse for party wear.",
-        category: "Blouses",
-        stock: 20,
-        tags: ["trending", "party"],
-        color: ["Silver", "Gold", "Black"],
-        fabric: "Georgette"
-    },
-    {
-        id: "blouse-04",
-        name: "Velvet Blouse – Navy",
-        price: "₹999",
-        discountPrice: "0",
-        image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=1000&auto=format&fit=crop",
-        description: "Classic velvet blouse in navy blue.",
-        category: "Blouses",
-        stock: 18,
-        color: ["Navy Blue", "Grey", "Golden Yellow", "Pink"],
-        fabric: "Velvet"
-    }
 ];

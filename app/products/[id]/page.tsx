@@ -45,10 +45,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
         .filter(p => p.category === product.category && p.id !== product.id && p.stock > 0);
 
     // If not enough related products in same category, fill with other random products
-    if (relatedProducts.length < 4) {
+    const limit = 8;
+    if (relatedProducts.length < limit) {
         const otherProducts = products
             .filter(p => p.category !== product.category && p.id !== product.id && p.stock > 0)
-            .slice(0, 4 - relatedProducts.length);
+            .slice(0, limit - relatedProducts.length);
         relatedProducts.push(...otherProducts);
     }
 

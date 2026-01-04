@@ -58,8 +58,8 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
-              { name: "Sarees", image: "/assets/sample.avif" },
-              { name: "Dress Materials", image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop" }
+              { name: "Sarees", image: "/assets/sareeSample.avif" },
+              { name: "Dresses", image: "/assets/dressSample.png" }
             ].map((cat) => (
               <Link key={cat.name} href={`/products?category=${encodeURIComponent(cat.name)}`} className="group relative overflow-hidden rounded-lg aspect-[4/5]">
                 <Image
@@ -118,10 +118,10 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: "Kanjivaram", image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop" },
-              { name: "Banarasi", image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=800&auto=format&fit=crop" },
-              { name: "Designer", image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=800&auto=format&fit=crop" },
-              { name: "Handloom", image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop" }
+              { name: "Digital Crape", image: "/assets/digitalCrape_dummy.png" },
+              { name: "Kota", image: "/assets/kota_dummy.png" },
+              { name: "Banarasi", image: "/assets/banarasi_dummy.png" },
+              { name: "Kalamkari Cotton", image: "/assets/kalamkarCotton_dummy.png" }
             ].map((brand) => (
               <Link key={brand.name} href="/products" className="group relative overflow-hidden rounded-lg aspect-square">
                 <Image
