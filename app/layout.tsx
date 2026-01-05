@@ -43,6 +43,9 @@ export const metadata: Metadata = {
     description: "Premium clothing showcase for Uma Textiles and Fancy.",
     images: ['/assets/logo9.png'],
   },
+  alternates: {
+    canonical: './',
+  },
 };
 
 export default function RootLayout({
