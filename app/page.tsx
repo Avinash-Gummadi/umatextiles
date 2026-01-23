@@ -176,7 +176,7 @@ export default function Home() {
       <section className="py-20 md:py-32 bg-slate-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <Image
-            src="/assets/sample.avif"
+            src="/assets/sareeSample.avif"
             alt="Pattern"
             fill
             className="object-cover"

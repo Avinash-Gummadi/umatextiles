@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { toast } from "sonner";
 import { Product } from "@/data/products";
@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Copy, Link as LinkIcon, AlertCircle } from "lucide-react";
+import { Copy, Link as LinkIcon, AlertCircle, Share2 } from "lucide-react";
 
 interface DashboardClientProps {
     products: Product[];
@@ -21,6 +21,20 @@ export default function DashboardClient({ products }: DashboardClientProps) {
 
     const activeProducts = products.filter(p => p.stock > 0);
     const outOfStockProducts = products.filter(p => p.stock === 0);
+
+    useEffect(() => {
+        if (selectedProducts.length === 0) {
+            setGeneratedLink("");
+            return;
+        }
+
+        const baseUrl = window.location.origin;
+        const params = new URLSearchParams();
+        selectedProducts.forEach((id) => params.append("id", id));
+
+        const link = `${baseUrl}/collection?${params.toString()}`;
+        setGeneratedLink(link);
+    }, [selectedProducts]);
 
     const toggleProduct = (productId: string) => {
         setSelectedProducts((prev) =>
@@ -36,21 +50,6 @@ export default function DashboardClient({ products }: DashboardClientProps) {
                 ? prev.filter((id) => id !== productId)
                 : [...prev, productId]
         );
-    };
-
-    const generateLink = () => {
-        if (selectedProducts.length === 0) {
-            toast.error("Please select at least one product");
-            return;
-        }
-
-        const baseUrl = window.location.origin;
-        const params = new URLSearchParams();
-        selectedProducts.forEach((id) => params.append("id", id));
-
-        const link = `${baseUrl}/collection?${params.toString()}`;
-        setGeneratedLink(link);
-        toast.success("Link generated successfully!");
     };
 
     const copyLink = () => {
@@ -148,51 +147,82 @@ export default function DashboardClient({ products }: DashboardClientProps) {
         window.open(`https://wa.me/?text=${text}`, '_blank');
     };
 
+    const shareLink = async () => {
+        const shareData = {
+            title: 'Uma Textiles Collection',
+            text: 'Check out this collection of products!',
+            url: generatedLink,
+        };
+
+        if (navigator.share && navigator.canShare(shareData)) {
+            try {
+                await navigator.share(shareData);
+                toast.success("Shared successfully!");
+            } catch (err) {
+                if ((err as Error).name !== 'AbortError') {
+                    console.error("Error sharing link:", err);
+                    toast.error("Failed to share link");
+                }
+            }
+        } else {
+            // Fallback to WhatsApp
+            const text = `Check out this collection: ${generatedLink}`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+        }
+    };
+
     return (
         <div className="space-y-8">
             <Tabs defaultValue="active" className="w-full">
-                <TabsList className="grid w-full grid-cols-3 max-w-[600px]">
-                    <TabsTrigger value="active">Active Products</TabsTrigger>
-                    <TabsTrigger value="active-gallery">Active Gallery</TabsTrigger>
-                    <TabsTrigger value="out-of-stock">Out of Stock ({outOfStockProducts.length})</TabsTrigger>
+                <TabsList className="grid w-full grid-cols-3 max-w-[600px] h-auto">
+                    <TabsTrigger value="active" className="text-xs sm:text-sm px-1 sm:px-3">Active Products</TabsTrigger>
+                    <TabsTrigger value="active-gallery" className="text-xs sm:text-sm px-1 sm:px-3">Active Gallery</TabsTrigger>
+                    <TabsTrigger value="out-of-stock" className="text-xs sm:text-sm px-1 sm:px-3">Out of Stock ({outOfStockProducts.length})</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="active" className="space-y-8 mt-6">
-                    <Card>
-                        <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0 pb-2">
-                            <div className="space-y-1">
-                                <CardTitle className="text-2xl font-semibold">Select Products</CardTitle>
+                    <Card className="border-primary/20 bg-muted/10">
+                        <CardHeader className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2">
+                            <div>
+                                <CardTitle className="text-xl font-semibold flex items-center gap-2">
+                                    Collection Builder
+                                    {selectedProducts.length > 0 && (
+                                        <span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+                                            {selectedProducts.length} selected
+                                        </span>
+                                    )}
+                                </CardTitle>
                                 <CardDescription>
-                                    Choose products to create a curated collection link.
+                                    Select products below to automatically generate a shareable link.
                                 </CardDescription>
                             </div>
-                            <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
-                                <span className="text-sm font-medium">
-                                    {selectedProducts.length} selected
-                                </span>
-                                <Button onClick={generateLink} disabled={selectedProducts.length === 0}>
-                                    <LinkIcon className="mr-2 h-4 w-4" />
-                                    Generate Link
-                                </Button>
-                            </div>
                         </CardHeader>
-                    </Card>
-
-                    {generatedLink && (
-                        <Card className="bg-muted/50 border-primary/20">
-                            <CardContent className="pt-6">
-                                <div className="flex items-center gap-4">
-                                    <div className="flex-1 p-3 bg-background rounded-md border font-mono text-sm break-all">
-                                        {generatedLink}
+                        <CardContent>
+                            <div className="min-h-[110px] sm:min-h-[60px] flex flex-col justify-center">
+                                {selectedProducts.length > 0 && generatedLink ? (
+                                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 bg-background p-2 rounded-lg border shadow-sm animate-in fade-in zoom-in duration-300">
+                                        <div className="flex-1 min-w-0 px-3 py-2 text-sm font-mono text-muted-foreground truncate rounded bg-muted/30">
+                                            {generatedLink}
+                                        </div>
+                                        <div className="flex items-center gap-2 shrink-0">
+                                            <Button size="sm" onClick={copyLink} className="flex-1 sm:flex-none">
+                                                <Copy className="mr-2 h-3.5 w-3.5" />
+                                                Copy
+                                            </Button>
+                                            <Button size="sm" variant="outline" onClick={shareLink} className="flex-1 sm:flex-none">
+                                                <Share2 className="mr-2 h-3.5 w-3.5" />
+                                                Share
+                                            </Button>
+                                        </div>
                                     </div>
-                                    <Button onClick={copyLink} variant="secondary">
-                                        <Copy className="mr-2 h-4 w-4" />
-                                        Copy
-                                    </Button>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    )}
+                                ) : (
+                                    <div className="text-sm text-muted-foreground italic px-2 text-center border-2 border-dashed border-muted rounded-lg h-full flex items-center justify-center bg-muted/5 py-8 sm:py-4">
+                                        Start selecting products from the list below...
+                                    </div>
+                                )}
+                            </div>
+                        </CardContent>
+                    </Card>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {activeProducts.map((product) => (
@@ -208,6 +238,7 @@ export default function DashboardClient({ products }: DashboardClientProps) {
                                     <Checkbox
                                         checked={selectedProducts.includes(product.id)}
                                         onCheckedChange={() => toggleProduct(product.id)}
+                                        onClick={(e) => e.stopPropagation()}
                                         className="mt-1"
                                     />
                                     {/* Image Logic Fix: Ensure product.image is used if available */}

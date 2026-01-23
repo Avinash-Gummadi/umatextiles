@@ -13,8 +13,8 @@ export default async function Dashboard() {
 
     return (
         <div className="container py-10">
-            <div className="flex items-center justify-between mb-8">
-                <h1 className="text-3xl font-serif font-bold">Admin Dashboard</h1>
+            <div className="flex items-center justify-between mb-8 flex-wrap gap-2">
+                <h1 className="text-2xl md:text-3xl font-serif font-bold">Admin Dashboard</h1>
                 <form action={logout}>
                     <Button variant="outline">Logout</Button>
                 </form>
