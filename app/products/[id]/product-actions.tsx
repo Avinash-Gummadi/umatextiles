@@ -63,7 +63,7 @@ export default function ProductActions({ productName }: ProductActionsProps) {
 
     const handleWhatsApp = () => {
         // Replace with actual phone number
-        const phoneNumber = "919876543210";
+        const phoneNumber = "919493154284";
         const text = encodeURIComponent(`Hi, I am interested in ${productName}. Can you provide more details? Link: ${window.location.href}`);
         window.open(`https://wa.me/${phoneNumber}?text=${text}`, "_blank");
     };
